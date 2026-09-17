@@ -80,7 +80,7 @@ function heal(maxHp, currentHp, healAmount) {
     return maxHP;
   }
 
-  or;
+  //or;
 
   const hp = currentHp + healAmount;
   if (hp > maxHp) {
@@ -125,7 +125,7 @@ function getProficiencyBonus(level, rank) {
     return level + bonus;
   }
 
-  or;
+  //or;
 
   if (rank === "untrained") {
     return 0;
@@ -163,7 +163,7 @@ function getCoverBonus(behindObstacle, takingCover) {
   return ac + bonus;
 }
 
-or;
+//or;
 
 if (takingCover) {
   return 4;

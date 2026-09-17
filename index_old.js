@@ -5,16 +5,39 @@
  * @param {boolean} hasScroll - whether the wizard has a scroll of the spell
  * @returns {boolean} whether the wizard can cast the spell
  */
+// let isSpellPrepared;
+// let hasScroll;
+let _isSpellPrepared = prompt(`is the spell already prepared ?
+    Y for yes, 
+    or N for no?\n`);
+// if (_isSpellPrepared === "Y" || _isSpellPrepared === "y") {
+//   isSpellPrepared = true;
+// }
+let _hasScroll = prompt(`the wizard has a scroll ?
+    Y for yes, 
+    or N for no?\n`);
+// if (_hasScroll === "Y" || _hasScroll === "y") {
+//   hasScroll = true;
+// }
+// console.log(isSpellPrepared);
+
+// console.log(hasScroll);
 function canCastSpell(isSpellPrepared, hasScroll) {
   // TODO
-  if (isSpellPrepared) {
-    return true;
-  } else if (hasScroll) {
+
+  if (
+    (hasScroll = _hasScroll === "Y" || _hasScroll === "y") ||
+    (isSpellPrepared = _isSpellPrepared === "Y" || _isSpellPrepared === "y")
+  ) {
+    console.log("Wizard can cast a spell!");
     return true;
   } else {
+    console.log("Wizard cannot cast a spell!");
     return false;
   }
 }
+
+console.log(canCastSpell());
 /**
  * A creature is hidden from an observer if it is actively hiding
  * or if the observer is not aware of it.
@@ -24,12 +47,9 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  */
 function isHidden(hiding, aware) {
   // TODO
-  if (hidding === true || aware === false) return true;
-  else {
-    return false;
-  }
   return hiding || !aware;
 }
+
 /**
  * A strike hits if the attack value is greater than or equal
  * to the target's armor class (AC).
@@ -39,13 +59,6 @@ function isHidden(hiding, aware) {
  */
 function doesStrikeHit(attack, ac) {
   // TODO
-  if (attack >= acc) {
-    return true;
-  } else {
-    return false;
-  }
-
-  or;
   return attack >= ac;
 }
 
@@ -71,17 +84,6 @@ function doesStrikeCrit(attack, ac) {
  */
 function heal(maxHp, currentHp, healAmount) {
   // TODO
-  const newHP = currentHp + healAmount;
-
-  if (newHP > maxHP) {
-    newHP = maxHP;
-    return newHP;
-    or;
-    return maxHP;
-  }
-
-  or;
-
   const hp = currentHp + healAmount;
   if (hp > maxHp) {
     return maxHp;
@@ -124,21 +126,8 @@ function getProficiencyBonus(level, rank) {
     bonus = 8;
     return level + bonus;
   }
-
-  or;
-
-  if (rank === "untrained") {
-    return 0;
-  } else if (rank === "trained") {
-    return level + 2;
-  } else if (rank === "expert") {
-    return level + 4;
-  } else if (rank === "maste") {
-    return level + 6;
-  } else if (rank === "legendary") {
-    return level + 8;
-  }
 }
+
 /**
  * A creature can get a bonus to its armor class (AC) by taking cover.
  * If the creature is behind an obstacle, it gets a +2 bonus to its AC,
@@ -152,25 +141,17 @@ function getProficiencyBonus(level, rank) {
 function getCoverBonus(behindObstacle, takingCover) {
   // TODO
   let ac;
-  let bonus = 0;
-  if (behindObstacle) {
-    bonus = 2;
-  } else if (takingCover) {
-    bonus = 4;
-  } else {
-    bonus = 0;
+  let bonus=0;
+  if (behindObstacle){
+    bonus=2;
   }
-  return ac + bonus;
-}
-
-or;
-
-if (takingCover) {
-  return 4;
-} else if (behindObstacle) {
-  return 2;
-} else {
-  return 0;
+  else if(takingCover){
+    bonus=4;
+  }
+  else{
+    bonus=0;
+  }
+  return ac+bonus;
 }
 
 /**
@@ -187,14 +168,6 @@ if (takingCover) {
  */
 function getRemainingHp(maxHp, currentHp, damage) {
   // TODO
-  const newHP = currentHP - damage;
-  if (damage >= maxHP * 2) {
-    return -1;
-  } else if (newHP <= 0) {
-    return 0;
-  } else {
-    return newHP;
-  }
 }
 
 /**
@@ -207,21 +180,6 @@ function getRemainingHp(maxHp, currentHp, damage) {
  */
 function canSee(light, vision) {
   // TODO
-  if (light === "brigth") {
-    return true;
-  } else if (light === "dim") {
-    if (vision === "low light" || vision === "dark") {
-      return true;
-    } else {
-      return false;
-    }
-  } else if (ligth === "dark") {
-    if (vision === "dark") {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
 
 /**
@@ -237,15 +195,3 @@ function canSee(light, vision) {
 function getStrikeDamage(attack, ac, damage) {
   // TODO
 }
-if (!doesStrikeCrit(attack, ac)) {
-  return 0;
-}
-if (doesStrikeCrit(attack, ac)) {
-  return damage * 2;
-} else {
-  return damage;
-}
-
-//or
-
-doesStrikeCrit(attack, ac) ? damage * 2 : damage;

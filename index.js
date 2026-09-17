@@ -47,7 +47,7 @@ console.log(canCastSpell());
  */
 function isHidden(hiding, aware) {
   // TODO
-  return hiding || aware;
+  return hiding || !aware;
 }
 
 /**
@@ -59,7 +59,7 @@ function isHidden(hiding, aware) {
  */
 function doesStrikeHit(attack, ac) {
   // TODO
-  return (attack >= ac);
+  return attack >= ac;
 }
 
 /**
@@ -71,6 +71,7 @@ function doesStrikeHit(attack, ac) {
  */
 function doesStrikeCrit(attack, ac) {
   // TODO
+  return attack >= ac + 10;
 }
 
 /**
@@ -83,6 +84,12 @@ function doesStrikeCrit(attack, ac) {
  */
 function heal(maxHp, currentHp, healAmount) {
   // TODO
+  const hp = currentHp + healAmount;
+  if (hp > maxHp) {
+    return maxHp;
+  } else {
+    return hp;
+  }
 }
 
 /**
@@ -103,6 +110,22 @@ function heal(maxHp, currentHp, healAmount) {
  */
 function getProficiencyBonus(level, rank) {
   // TODO
+  let bonus = 0;
+  if (rank === "untrained") {
+    return bonus;
+  } else if (rank === "trained") {
+    bonus = 2;
+    return level + bonus;
+  } else if (rank === "expert") {
+    bonus = 4;
+    return level + bonus;
+  } else if (rank === "master") {
+    bonus = 6;
+    return level + bonus;
+  } else if (rank === "legendary") {
+    bonus = 8;
+    return level + bonus;
+  }
 }
 
 /**
@@ -117,6 +140,18 @@ function getProficiencyBonus(level, rank) {
  */
 function getCoverBonus(behindObstacle, takingCover) {
   // TODO
+  let ac;
+  let bonus=0;
+  if (behindObstacle){
+    bonus=2;
+  }
+  else if(takingCover){
+    bonus=4;
+  }
+  else{
+    bonus=0;
+  }
+  return ac+bonus;
 }
 
 /**

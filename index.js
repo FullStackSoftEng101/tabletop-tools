@@ -5,10 +5,39 @@
  * @param {boolean} hasScroll - whether the wizard has a scroll of the spell
  * @returns {boolean} whether the wizard can cast the spell
  */
+// let isSpellPrepared;
+// let hasScroll;
+let _isSpellPrepared = prompt(`is the spell already prepared ?
+    Y for yes, 
+    or N for no?\n`);
+// if (_isSpellPrepared === "Y" || _isSpellPrepared === "y") {
+//   isSpellPrepared = true;
+// }
+let _hasScroll = prompt(`the wizard has a scroll ?
+    Y for yes, 
+    or N for no?\n`);
+// if (_hasScroll === "Y" || _hasScroll === "y") {
+//   hasScroll = true;
+// }
+// console.log(isSpellPrepared);
+
+// console.log(hasScroll);
 function canCastSpell(isSpellPrepared, hasScroll) {
   // TODO
+
+  if (
+    (hasScroll = _hasScroll === "Y" || _hasScroll === "y") ||
+    (isSpellPrepared = _isSpellPrepared === "Y" || _isSpellPrepared === "y")
+  ) {
+    console.log("Wizard can cast a spell!");
+    return true;
+  } else {
+    console.log("Wizard cannot cast a spell!");
+    return false;
+  }
 }
 
+console.log(canCastSpell());
 /**
  * A creature is hidden from an observer if it is actively hiding
  * or if the observer is not aware of it.
@@ -18,6 +47,7 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  */
 function isHidden(hiding, aware) {
   // TODO
+  return hiding || aware;
 }
 
 /**
@@ -29,6 +59,7 @@ function isHidden(hiding, aware) {
  */
 function doesStrikeHit(attack, ac) {
   // TODO
+  return (attack >= ac);
 }
 
 /**
